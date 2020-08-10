@@ -11,6 +11,7 @@ import lambda.IStringPredicate;
 import stream.School;
 import stream.Student;
 import stream.Test;
+import structure.MyLinkedList;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
@@ -21,6 +22,8 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -32,6 +35,80 @@ import java.util.function.Predicate;
 public class Main {
     public static void main(String[] args) {
         System.out.println("hello");
+
+
+        //List<String> customList = new ArrayList<>();
+        List<String> customList = new LinkedList<>();
+
+        customList.add("x");
+        customList.add("y");
+        customList.add("z");
+        customList.add("x");
+
+        customList.stream()
+                .forEach(value -> System.out.println(value));
+
+        System.out.println("****************************************");
+
+
+        LinkedList<String> linkedList = new LinkedList<>();
+        // List<String> linkedList = new ArrayList<>();
+        linkedList.add("A");
+        linkedList.add("B");
+        linkedList.addFirst("C");
+        linkedList.addLast("D");
+
+
+        linkedList.stream().forEach(value -> System.out.println(value));
+
+        System.out.println("****************************************");
+        Set<Integer> set = new HashSet<>();
+        set.add(1);
+        set.add(2);
+        set.add(3);
+        set.add(1);
+
+
+        set.stream().forEach(value -> System.out.println(value));
+
+        System.out.println("****************************************");
+
+
+        Map<Integer, String> map = new HashMap<>();
+        map.put(1, "R");
+        map.put(2,"S");
+
+        map.forEach((k, v) -> System.out.println(k + " - " + v));
+
+
+
+        Map<Integer, String> map2 = new TreeMap<>();
+        map2.put(1, "f");
+        map2.put(2,"i");
+
+        map2.forEach((k, v) -> System.out.println(k + " - " + v));
+
+
+        System.out.println("***************HHHHHH*************************");
+
+        MyLinkedList<String> myLinkedList = new MyLinkedList();
+        myLinkedList.add("n");
+        myLinkedList.add("m");
+        myLinkedList.add("o");
+        myLinkedList.addLast("p");
+        myLinkedList.addFirst("q");
+        myLinkedList.print();
+
+        System.out.println("***************HHHHHH*************************");
+
+        MyLinkedList<Integer> myLinkedList2 = new MyLinkedList();
+        myLinkedList2.add(10);
+        myLinkedList2.add(100);
+        myLinkedList2.add(1000);
+        myLinkedList2.add(10000);
+
+        myLinkedList2.print();
+
 
         ICalculatorLambda sum = (a, b) -> { return a + b; };
         int sumResult = sum.calculate(5, 7);
