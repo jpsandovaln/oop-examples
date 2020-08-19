@@ -2,6 +2,10 @@ import annotation.AnnotationReflexion;
 import annotation.CustomMappingClass;
 import annotation.CustomMappingMethodGet;
 import annotation.CustomMappingMethodPost;
+import builder.BasicEmployee;
+import builder.Employee;
+import builder.EmployeeBuilder;
+import builder.IBuilderEmployee;
 import generic.GenericValue;
 import generic.ITestGeneric;
 import generic.Validation;
@@ -36,9 +40,38 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("hello");
 
+        Employee employee1 = new Employee(1, 5488, "Maria", "Perez");
+        Employee employee2 = new Employee(2, 456, "Carlos", "Vargas", 30);
+        Employee employee3 = new Employee(3, 98, "pepe", "Torrez", 35, 6545, "M");
+
+        List<String> clients = new ArrayList<>();
+        clients.add("Ana");
+        clients.add("luis");
+        clients.add("Julia");
+
+        Employee employee4 = new Employee(4, 568, "tito", "Morales", clients);
+
+        System.out.println(employee1);
+        System.out.println(employee2);
+        System.out.println(employee3);
+        System.out.println(employee4);
+
+        System.out.println("--------------------------------------------------------");
+
+        Employee employee5 = new EmployeeBuilder(6, 879, "Carolina", "Perez")
+                .phone(1654).age(87).client("Martha").client("Carla").client("Julia").build();
+
+        System.out.println(employee5);
+
+        System.out.println("--------------------------------------------------------");
+
+        IBuilderEmployee bEmployee = new BasicEmployee(7, 87,"yola", "gutierrez").age(40);
+
+        Employee employee6 = bEmployee.build();
+
 
         //List<String> customList = new ArrayList<>();
-        List<String> customList = new LinkedList<>();
+        /*List<String> customList = new LinkedList<>();
 
         customList.add("x");
         customList.add("y");
@@ -215,7 +248,7 @@ public class Main {
                 .map(student -> student.getName() + " - " + student.getLastName())
                 .forEach(value -> System.out.println(value));
 
-        testAnnotation();
+        testAnnotation();*/
 
     }
 
